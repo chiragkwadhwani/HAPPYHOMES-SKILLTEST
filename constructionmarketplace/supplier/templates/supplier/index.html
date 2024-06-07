@@ -1,0 +1,30 @@
+{% extends 'supplier/base.html' %}
+
+{% block title %}
+<title>Home Page</title>
+{% load crispy_forms_tags %}
+{% load static %}
+<style>
+
+</style>
+<script>
+
+</script>
+{% endblock %}
+
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <h3 style="text-align: center;">You're Logged In</h3><br>
+        <h4 style="text-align: center;"><button><a href="details/">Go To Supplier Page</a></h4><br><hr>
+        <br><br>
+    {% else %}
+        <h3 style="text-align: center;">Don't have an account? Login/Sign Up Here</h3><br>
+        <h4 style="text-align: center;"><button><a href="accounts/login/">Login / Sign Up</a></h4><br><hr>
+        <br><br>
+    {% endif %}
+    <h3 style="text-align: center;">Introduction about XYZ Construction Marketplace</h3>
+    <br><h3 style="text-align: center;">...</h3>
+    <br><h3 style="text-align: center;">...</h3>
+    <br><h3 style="text-align: center;">...</h3>
+{% endblock %}

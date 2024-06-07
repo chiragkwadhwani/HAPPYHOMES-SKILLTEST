@@ -1,0 +1,33 @@
+{% extends 'supplier/base.html' %}
+
+{% block title %}
+{% load crispy_forms_tags %}
+<title>Activity Logs</title>
+{% endblock %}
+
+
+{% block content %}
+    <div class="container"></div>
+        <h1 style="text-align: center;">Activity Logs</h1>
+        <div class="table-responsive">
+        <table class="table table-hover">
+            <tr class="thead-dark">
+                <th>ID</th>
+                <th>Order ID</th>
+                <th>Status</th>
+                <th>Timestamp</th>
+            </tr>
+            {% for data in logs %}
+            <tr>
+                <td>{{data.id}}</td>
+                <td>{{data.orderid}}</td>
+                <td>{{data.status}}</td>
+                <td>{{data.created}}</td>
+            </tr>
+            {% empty %}
+                <tr><td colspan="5">Activity Logs Not Found</td></tr>
+            {% endfor %}
+        </table>
+        </div>
+    </div>
+{% endblock %}

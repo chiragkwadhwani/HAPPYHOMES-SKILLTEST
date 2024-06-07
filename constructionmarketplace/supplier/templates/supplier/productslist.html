@@ -1,0 +1,36 @@
+{% extends 'supplier/base.html' %}
+
+{% block title %}
+{% load crispy_forms_tags %}
+<title>Products List</title>
+{% endblock %}
+
+
+{% block content %}
+    <div class="container"></div>
+        <h1 style="text-align: center;">Products List</h1>
+        <p style="text-align: right;"><a href="/details/products/add/{{supplierid}}/0/"><input type="submit" class="btn btn-outline-secondary btn-success" style="color:white;" value="List A New Product"></a></p>
+        <div class="table-responsive">
+        <table class="table table-hover">
+            <tr class="thead-dark">
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Availability</th>
+            </tr>
+            {% for plist in list %}
+            <tr onclick="window.location='/details/products/edit/{{supplierid}}/{{plist.id}}/'" style="cursor:pointer;">
+                <td>{{plist.id}}</td>
+                <td>{{plist.name}}</td>
+                <td>{{plist.desc}}</td>
+                <td>{{plist.price}}</td>
+                <td>{{plist.availability}}</td>
+            </tr>
+            {% empty %}
+                <tr><td colspan="5">Products List Not Found</td></tr>
+            {% endfor %}
+        </table>
+        </div>
+    </div>
+{% endblock %}

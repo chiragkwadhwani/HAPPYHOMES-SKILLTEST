@@ -1,0 +1,45 @@
+{% extends 'supplier/base.html' %}
+
+{% block title %}
+    {% load crispy_forms_tags %}
+    <title>Product Setup</title>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+{% endblock %}
+
+
+{% block content %}
+    
+    <div class="container">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <h4 class="text-center">List A New Product</h4>
+            <div class="form-row">
+                <div class="col-xl"></div>
+                <div class="col-xl">
+                    {{ pform.name|as_crispy_field }}
+                    {{ pform.desc|as_crispy_field }}
+                    {{ pform.price|as_crispy_field }}
+                    {{ pform.availability|as_crispy_field }}
+                    <input type="hidden" name="supplierid" value="{{supplierid}}">
+                    <br>
+                    <!-- <input type="submit" value="Save & Exit" class="btn btn-success"> -->
+
+                    <input class="btn btn-primary" type="submit" value="Submit" class="btn btn-primary">
+                    {% if pform.name.value != None %}
+                        <a href="/details/products/del/{{supplierid}}/{{productid}}/"><input type="button" value="Delete" class="btn btn-danger"></a>
+                    {% endif %}
+                    <a href="/details/products/{{supplierid}}"><input type="button" value="Exit Without Saving" style="background-color:#00a86b;color:white;" class="btn"></a>
+                    <!-- <button onclick="goBack()" class="btn btn-danger">Exit Without Saving</button> -->
+
+                    <!-- <a href="/booksource/list/all/"><input class="btn btn-danger" type="submit" value="Exit Without Saving"></a> -->
+                </div>
+                <div class="col-xl"></div>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

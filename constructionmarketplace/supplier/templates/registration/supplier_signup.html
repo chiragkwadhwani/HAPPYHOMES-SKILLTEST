@@ -1,0 +1,110 @@
+{% extends 'supplier/base.html' %}
+
+{% block title %}
+    <title>Create Supplier Account</title>
+    {% load crispy_forms_tags %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <u><h2 style="text-align:center;">Supplier Sign Up</h2><br><br></u>
+    <form action="" method="POST">{% csrf_token %}
+        {{form.non_field_errors}}
+
+        {% for msg in messages %}
+            <p style="color:red;">{{msg}}</p>
+        {% endfor %}
+
+        <div class="form-row">
+            <div class="col-xl-1">
+                <label class="pt-1">Business Name*:</label>
+            </div>
+            <div class="col-xl-4">
+                {{ form.biz_name|as_crispy_field }}
+            </div>
+            <div class="col-xl-1"></div>
+            <div class="col-xl-1">
+                <label class="pt-1">Business Description*:</label>
+            </div>
+            <div class="col-xl-5">
+                {{ form.biz_info|as_crispy_field }}
+            </div>
+        </div><br>
+
+        <div class="form-row">
+            <div class="col-xl-1">
+                <label class="pt-1">Business Contact Number*:</label>
+            </div>
+            <div class="col-xl-4">
+                {{ form.biz_phone|as_crispy_field }}
+            </div>
+            <div class="col-xl-1"></div>
+            <div class="col-xl-1">
+                <label class="pt-1">Business Address*:</label>
+            </div>
+            <div class="col-xl-5">
+                {{ form.biz_addr|as_crispy_field }}
+            </div>
+        </div><br>
+
+        <div class="form-row">
+            <div class="col-xl-1">
+                <label class="pt-1">Email Username*:</label>
+            </div>
+            <div class="col-xl-4">
+                {{ form.email|as_crispy_field }}
+            </div>
+            <div class="col-xl-1"></div>
+            <div class="col-xl-1">
+                <label class="pt-1">FirstName*:</label>
+            </div>
+            <div class="col-xl-5">
+                {{ form.first_name|as_crispy_field }}
+            </div>
+        </div><br>
+
+        <div class="form-row">
+            <div class="col-xl-1">
+                <label class="pt-1">Custom Username*:</label>
+            </div>
+            <div class="col-xl-4">
+                {{ form.username|as_crispy_field }}
+            </div>
+            <div class="col-xl-1"></div>
+            <div class="col-xl-1">
+                <label class="pt-1">is_active*:</label>
+            </div>
+            <div class="col-xl-5">
+                {{ form.is_active|as_crispy_field }}
+            </div>
+        </div><br>
+        
+        <div class="form-row">
+            <!-- <div class="col-xl-1">
+                <label class="pt-1">Password:</label>
+            </div> -->
+            <div class="col-xl-5">
+                {{ form.password1|as_crispy_field }}
+            </div>
+            <div class="col-xl-1"></div>
+            <!-- <div class="col-xl-1">
+                <label class="pt-1">Password Confirmation:</label>
+            </div> -->
+            <div class="col-xl-6">
+                {{ form.password2|as_crispy_field }}
+            </div>
+        </div><br>
+
+        <div class="form-row">
+            <div class="">
+                <input type="Submit" value="Save & Exit" class="btn btn-success">
+            </div>
+            <div class="">
+                <a href="/userlisting/"><input class="btn btn-danger" type="button" value="Exit Without Saving"></a>
+            </div>
+        </div>
+        
+    </form>
+</div>
+
+{% endblock %}

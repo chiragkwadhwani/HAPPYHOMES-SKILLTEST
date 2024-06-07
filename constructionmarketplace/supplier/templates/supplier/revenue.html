@@ -1,0 +1,40 @@
+{% extends 'supplier/base.html' %}
+
+{% block title %}
+{% load crispy_forms_tags %}
+<title>Revenue Details</title>
+{% endblock %}
+
+
+{% block content %}
+    <div class="container"></div>
+        <h1 style="text-align: center;">Revenue / Income Statement</h1>
+        <div class="table-responsive">
+        <table class="table table-hover">
+            <tr class="thead-dark">
+                <th>ID</th>
+                <th>Order ID</th>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Status</th>
+                <th>Created</th>
+            </tr>
+            {% for data in revenue %}
+            <tr>
+                <td>{{data.id}}</td>
+                <td>{{data.orderid}}</td>
+                <td>{{data.productname}}</td>
+                <td>{{data.qty}}</td>
+                <td>{{data.totalprice}}</td>
+                <td>{{data.status}}</td>
+                <td>{{data.created}}</td>
+            </tr>
+            {% empty %}
+                <tr><td colspan="7">Completed Delivery Revenue Details Not Found</td></tr>
+            {% endfor %}
+            <tr><td colspan="7">Total Revenue = Rp. {{totalrevenue}}</td></tr>
+        </table>
+        </div>
+    </div>
+{% endblock %}

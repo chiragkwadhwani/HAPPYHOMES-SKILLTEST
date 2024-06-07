@@ -1,0 +1,20 @@
+{% extends "supplier/base.html" %}
+
+{% block title %}
+<style>
+  .btn {
+      background-color:#0080BC;
+      color:white;
+      height:40px;
+      width:300px;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1></h1>
+  <p style="text-align:center;">You have successfully logged out!</p>
+  <div class="form-row justify-content-center"><a href="{% url 'login' %}" class="btn">Click here to login again.</a></div><br><br>
+</div>
+{% endblock %}

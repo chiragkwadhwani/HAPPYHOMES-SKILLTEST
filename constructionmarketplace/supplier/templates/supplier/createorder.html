@@ -1,0 +1,40 @@
+{% extends 'supplier/base.html' %}
+
+{% block title %}
+    {% load crispy_forms_tags %}
+    <title>Create New Order</title>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+{% endblock %}
+
+
+{% block content %}
+    
+    <div class="container">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <h4 class="text-center">Create A New Order</h4><br>
+            <div class="form-row">
+                <div class="col-xl"></div>
+                <div class="col-xl">
+
+                    <label>Product Name*</label>
+                    {{ form.productname|as_crispy_field }}
+                    {{ form.qty|as_crispy_field }}
+
+                    <br>
+                    <!-- <input type="submit" value="Save & Exit" class="btn btn-success"> -->
+
+                    <input class="btn btn-primary" type="submit" value="Submit" class="btn btn-primary">
+
+                    <a href="{% url 'supplierpage' %}"><input type="button" value="Exit Without Saving" style="background-color:#00a86b;color:white;" class="btn"></a>
+                </div>
+                <div class="col-xl"></div>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}
